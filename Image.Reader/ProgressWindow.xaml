@@ -1,0 +1,58 @@
+﻿<Window
+    x:Class="Image.Reader.ProgressWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Image.Reader"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Width="440"
+    Height="200"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <!--  定义带阴影的Border样式  -->
+        <Style x:Key="ShadowedBorderStyle" TargetType="Border">
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="BorderBrush" Value="Gray" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect
+                        BlurRadius="10"
+                        Opacity="0.5"
+                        ShadowDepth="5"
+                        Color="Black" />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Padding" Value="10" />
+        </Style>
+    </Window.Resources>
+    <Border Style="{StaticResource ShadowedBorderStyle}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock
+                Grid.Row="0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="正在加载图像..." />
+            <TextBlock
+                x:Name="TipsTextBlock"
+                Grid.Row="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="耗时:1234ms" />
+            <ProgressBar
+                x:Name="ProgressBar"
+                Grid.Row="2"
+                Height="20"
+                Margin="20"
+                VerticalAlignment="Bottom"
+                Maximum="100"
+                Minimum="0" />
+        </Grid>
+    </Border>
+</Window>
